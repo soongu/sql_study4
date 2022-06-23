@@ -215,13 +215,15 @@ FROM tb_sal;
 -- expr1: Null을 가질 수 있는 값이나 표현식
 -- expr2: expr1이 Null일 경우 대체할 값
 SELECT 
-    emp_no,
-    emp_nm,
-    NVL(direct_manager_emp_no, '최상위관리자') AS 관리자
-FROM tb_emp;
+    emp_no
+    , emp_nm
+    , NVL(direct_manager_emp_no, '최상위관리자') AS 관리자
+FROM tb_emp
+;
 
 SELECT 
-    NVL(emp_nm, '존재안함') AS emp_nm
+    -- emp_nm
+     NVL(emp_nm, '존재안함') AS emp_nm
 FROM tb_emp
 WHERE emp_nm = '이정직';
 
@@ -233,9 +235,11 @@ WHERE emp_nm = '김회장'
 
 
 SELECT 
+    -- MAX(emp_nm)
+    -- NVL(emp_nm, '존재안함') AS emp_nm
     NVL(MAX(emp_nm), '존재안함') AS emp_nm
 FROM tb_emp
-WHERE emp_nm = '박찬호';
+WHERE emp_nm = '이승엽';
 
 -- NVL2(expr1, expr2, expr3)
 -- expr1의 값이 Null이 아니면 expr2를 반환, Null이면 expr3를 반환
@@ -267,3 +271,6 @@ FROM dual;
 SELECT 
     COALESCE(7000, NULL, NULL, 8000)
 FROM dual;
+
+
+
